@@ -5,6 +5,7 @@
 soong_namespace {
     imports: [
         "device/oneplus/sm8450-common",
+        "hardware/qcom-caf/common/libqti-perfd-client",
         "hardware/oplus",
         "hardware/qcom-caf/sm8450",
         "hardware/qcom-caf/wlan",
@@ -9158,35 +9159,6 @@ cc_prebuilt_library_shared {
     soc_specific: true,
 }
 
-cc_prebuilt_library_shared {
-    name: "libqti-perfd-client",
-    owner: "oneplus",
-    strip: {
-        none: true,
-    },
-    target: {
-        android_arm64: {
-            srcs: [
-                "proprietary/vendor/lib64/libqti-perfd-client.so",
-            ],
-            shared_libs: [
-                "libcutils",
-                "libutils",
-                "liblog",
-                "vendor.qti.hardware.perf@2.2",
-                "vendor.qti.hardware.perf@2.3",
-                "libhidlbase",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-    },
-    compile_multilib: "64",
-    prefer: true,
-    soc_specific: true,
-}
 
 cc_prebuilt_library_shared {
     name: "libqti-perfd",
@@ -21805,13 +21777,6 @@ cc_prebuilt_binary {
     soc_specific: true,
 }
 
-sh_binary {
-    name: "init.kernel.post_boot",
-    owner: "oneplus",
-    src: "proprietary/vendor/bin/init.kernel.post_boot.sh",
-    filename: "init.kernel.post_boot.sh",
-    soc_specific: true,
-}
 
 sh_binary {
     name: "init.qcom.sensors",
